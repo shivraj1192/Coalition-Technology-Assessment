@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="page1" >
+            <div class="img-container">
+            <img src="photo-1459666644539-a9755287d6b0.png" alt="" class="img-page1"></div>
+            <div class="nav">
+                <div class="nav-logo">
+                    <a href="#"><img src="Logo.png" alt=""></a>
+                </div>
+                <div class="nav-items">
+                    <a href="#page2">01.HISTORY</a>
+                    <a href="#page3">02.TEAM</a>
+                </div>
+            </div>
+        </div>
+        <div class="page2" id="page2">
+            <img src="peak.png" alt="" class="img-page2">
+            <img src="photo-1458442310124-dde6edb43d10.png" alt="" class="img-page2">
+            <img src="photo-1443980995706-8d107e98e707.png" alt="" class="img-page2">
+            <div class="page2-content">
+                <h1>01. </h1>
+                <span class="history">HISTORY</span>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta labore facere possimus dolore provident ipsum, magnam, ex aspernatur voluptatum, ullam molestias! Aut expedita voluptatum ipsa vitae quibusdam, natus nihil possimus.</p>
+            </div>
+            <div class="page2-footer">
+                <div class="slideimg">
+                <img src="peak.png" alt="">
+            </div>
+            <div class="slideimg"><img src="photo-1458442310124-dde6edb43d10.png" alt=""></div>
+            <div class="slideimg"><img src="photo-1443980995706-8d107e98e707.png" alt=""></div>
+            </div>footer
+        </div>
+
+        <div class="page3" id="page3">
+            <div class="page3-content">
+                <div>
+                <h1>02. </h1>
+                <span class="climb">CLIMB</span></div>
+                <div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta labore facere possimus dolore provident ipsum, magnam, ex aspernatur voluptatum, ullam molestias! Aut expedita voluptatum ipsa vitae quibusdam, natus nihil possimus.</p></div>
+            </div>
+            <div class="maountain-bar">
+                <p style="text-decoration: underline;" class="m1">MOUNTAIN 1</p>
+                <p class="m2">MOUNTAIN 2</p>
+
+            </div>
+            <div class="page3-img">
+                <img src="photo-1417021423914-070979c8eb34.png" alt="">
+            </div>
+        </div>
+        
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const images = document.querySelectorAll('.img-page2');
+            const dots = document.querySelectorAll('.slideimg');
+
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                images.forEach((img, i) => {
+                    if (i === index) {
+                        img.style.display = 'block';
+                    } else {
+                        img.style.display = 'none';
+                    }
+                });
+
+                dots.forEach((dot, i) => {
+                    if (i === index) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % images.length;
+                showSlide(currentSlide);
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + images.length) % images.length;
+                showSlide(currentSlide);
+            }
+
+            
+            showSlide(currentSlide);
+
+            
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = i;
+                    showSlide(currentSlide);
+                });
+            });
+
+            
+            setInterval(nextSlide, 10000);
+        });
+
+
+
+        window.addEventListener("scroll", function() {
+    var nav = document.querySelector(".nav");
+    var navItems = document.querySelector(".nav-items");
+    var page1Height = document.querySelector(".page1").offsetHeight;
+
+    if (window.pageYOffset > page1Height) {
+        nav.classList.add("white-bg");
+        navItems.classList.add("black-text");
+    } else {
+        nav.classList.remove("white-bg");
+        navItems.classList.remove("black-text");
+    }
+});
+
+
+    </script>
+</body>
+</html>
